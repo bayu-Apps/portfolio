@@ -5,7 +5,6 @@ import Img1 from "../assets/todolist.png";
 import Img2 from "../assets/airplane.png";
 import Img3 from "../assets/portfolio.svg";
 import { Link } from "react-scroll";
-import { href } from "react-router-dom";
 
 const projects = [
   {
@@ -15,7 +14,6 @@ const projects = [
     description: "Aplikasi untuk mencatat dan mengelola aktivitas harian. Menggunakan flutter sebagai framework untuk pengembangan aplikasi.",
     Link: "↗️",
     href: "https://github.com/bayu-Apps/Todo-list-application",
-
   },
   {
     title: "✈️ Airplane",
@@ -31,7 +29,6 @@ const projects = [
     description: "Website portfolio pribadi dengan animasi interaktif. Menggunakan tailwindcss, react.js, sebagai framework untuk pengembangan aplikasi.",
     Link: "↗️",
   },
- 
 ];
 
 const Work = () => {
@@ -56,7 +53,7 @@ const Work = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
             <div
@@ -67,21 +64,19 @@ const Work = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300" />
               </div>
-              <div className="flex justify-between">
               <div className="p-5">
                 <h3 className="text-xl font-semibold text-white mb-1">{project.title}</h3>
                 <p className="text-sm text-blue-400 font-medium">{project.type}</p>
                 <p className="text-gray-400 mt-2 text-sm">{project.description}</p>
-
               </div>
-                <div className="p-5 flex flex-col items-end">
-
-               <a href="https://github.com/bayu-Apps" className="text-[24px]">{project.Link}</a>
-                </div>
+              <div className="p-5 flex justify-end">
+                <a href={project.href || "#"} className="text-[24px] text-blue-400 hover:text-blue-500">
+                  {project.Link}
+                </a>
               </div>
             </div>
           ))}
